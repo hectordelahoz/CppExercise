@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
+project(SandBoxProject VERSION 0.1)
+add_subdirectory(Numbers)
+add_executable(sandbox main.cpp)
+target_link_libraries(sandbox PRIVATE numbers)
+add_subdirectory(Test)
