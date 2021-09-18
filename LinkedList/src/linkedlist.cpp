@@ -13,7 +13,7 @@ LinkedList::LinkedList(){
   size = 1;
 }
 
-LinkedList::LinkedList(int value){
+LinkedList::LinkedList(const int &value){
   root = new Node();
   root->data = value;
   root->next = nullptr;
@@ -28,9 +28,9 @@ int LinkedList::getRootValue(){
   return root->data;
 }
 
-int LinkedList::getValueAt(int index){
+int LinkedList::getValueAt(const int &index){
   if (index >= size){
-    return NULL;
+    return -1;
   }
   Node *temp = root;
   for (int i = 0; i < index; i++){
@@ -43,7 +43,19 @@ const Node* LinkedList::getRootAddr(){
   return root;
 }
 
-void LinkedList::pushBack(int value){
+bool LinkedList::updateValueAt(const unsigned int &index, const int &value){
+  if (index >= size)
+    return false;
+
+  Node *temp = root;
+  for (int i =0; i < index ; i++){
+    temp = temp->next;
+  }
+  temp->data = value;
+  return true;
+}
+
+void LinkedList::pushBack(const int &value){
   Node *temp = root;
   while(temp->next != nullptr){
     temp = temp->next;
@@ -55,7 +67,38 @@ void LinkedList::pushBack(int value){
   size++;
 }
 
-int LinkedList::getListSize(){
+void LinkedList::insert(const int &value){
+  Node *temp = root;
+  Node *newNode = new Node;
+  newNode->data = value;
+  newNode->next = temp;
+  root = newNode;
+  size++;
+}
+
+bool LinkedList::insertAt(const unsigned int &position, const int &value){
+  if(position >= size)
+    return false;
+
+  Node *temp = root;
+
+  if(position == 0){
+    insert(value);
+    return true;
+  }
+
+  for (int i = 0; i<position-1; i++){
+    temp=temp->next;
+  }
+  Node *newNode = new Node;
+  newNode->data = value;
+  newNode->next = temp->next;
+  temp->next = newNode;
+  size++;
+  return true;
+}
+
+unsigned int LinkedList::getListSize(){
   return size;
 }
 
@@ -69,6 +112,22 @@ void LinkedList::printList(){
     temp = temp->next;
   }
   cout << endl;
+}
+
+void LinkedList::printReverseList(){
+  traverseReversedList(root);
+}
+
+void LinkedList::traverseReversedList(Node *node){
+  if (node == nullptr){
+    return;
+  }
+  traverseReversedList(node->next);
+  if (node == root){
+    cout << node->data << endl;
+    return;
+  }
+  cout << node->data << "-";
 }
 
 void LinkedList::deleteList(Node *node){

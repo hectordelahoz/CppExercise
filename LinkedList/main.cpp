@@ -22,5 +22,20 @@ int main(int argc, char **argv){
   cout << "first list size now is: " << l1.getListSize() << endl;
   cout << "printing first list" << endl;
   l1.printList();
+  cout << "Updating Value"<< endl;
+  l1.updateValueAt(0,10);
+  l1.updateValueAt(1,50);
+  l1.updateValueAt(2,150);
+  l1.updateValueAt(3,250);
+  l1.updateValueAt(4,350);
+  cout << "printing first list" << endl;
+  l1.printList();
+  cout << "Inserting nodes at the beginning" << endl;
+  cout << "get current root address first: " << l1.getRootAddr() << endl;
+  l1.insert(20);
+  cout << "get root address after insert: " << l1.getRootAddr() << endl;
+  l1.printList();
+  cout << "pirnt the list in the reverse order " << endl;
+  l1.printReverseList();
   return 0;
 }
