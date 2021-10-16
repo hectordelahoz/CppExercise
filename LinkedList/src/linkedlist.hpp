@@ -25,10 +25,12 @@ class LinkedList{
     unsigned int getListSize();
     void printList();
     void printReverseList();
+    void reverseListOrder();
   private:
     Node *root = new Node();
     unsigned int size;
     void traverseReversedList(Node *);
+    void reverseOrder(Node *);
     void deleteList(Node *);
 };
 }

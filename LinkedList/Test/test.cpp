@@ -66,14 +66,15 @@ TEST_F(LinkedListTest, insertValueAt){
   EXPECT_EQ(l1.getValueAt(1),x1);
   EXPECT_EQ(l1.getValueAt(2),x2);
   EXPECT_TRUE(l1.insertAt(0,10));
-  EXPECT_FALSE(l1.insertAt(4,10));
+  EXPECT_TRUE(l1.insertAt(4,20));
   EXPECT_TRUE(l1.insertAt(2,x3));
-  EXPECT_EQ(l1.getListSize(),5);
+  EXPECT_EQ(l1.getListSize(),6);
   EXPECT_EQ(l1.getValueAt(0),10);
   EXPECT_EQ(l1.getValueAt(1),x0);
   EXPECT_EQ(l1.getValueAt(2),x3);
   EXPECT_EQ(l1.getValueAt(3),x1);
   EXPECT_EQ(l1.getValueAt(4),x2);
+  EXPECT_EQ(l1.getValueAt(5),20);
 }
 
 int main(int argc, char **argv){

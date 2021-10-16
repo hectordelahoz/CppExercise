@@ -25,10 +25,12 @@ LinkedList::~LinkedList(){
 }
 
 int LinkedList::getRootValue(){
+//This method takes: O(1)
   return root->data;
 }
 
 int LinkedList::getValueAt(const int &index){
+//This method takes: O(n)
   if (index >= size){
     return -1;
   }
@@ -44,6 +46,7 @@ const Node* LinkedList::getRootAddr(){
 }
 
 bool LinkedList::updateValueAt(const unsigned int &index, const int &value){
+//This method takes: O(n)
   if (index >= size)
     return false;
 
@@ -56,6 +59,7 @@ bool LinkedList::updateValueAt(const unsigned int &index, const int &value){
 }
 
 void LinkedList::pushBack(const int &value){
+//This method takes: O(n)
   Node *temp = root;
   while(temp->next != nullptr){
     temp = temp->next;
@@ -68,6 +72,7 @@ void LinkedList::pushBack(const int &value){
 }
 
 void LinkedList::insert(const int &value){
+//This method takes: O(1)
   Node *temp = root;
   Node *newNode = new Node;
   newNode->data = value;
@@ -77,16 +82,18 @@ void LinkedList::insert(const int &value){
 }
 
 bool LinkedList::insertAt(const unsigned int &position, const int &value){
-  if(position >= size)
-    return false;
-
-  Node *temp = root;
+//This method takes: O(n)
+  if(position >= size){
+    pushBack(value);
+    return true;
+  }
 
   if(position == 0){
     insert(value);
     return true;
   }
 
+  Node *temp = root;
   for (int i = 0; i<position-1; i++){
     temp=temp->next;
   }
@@ -103,6 +110,7 @@ unsigned int LinkedList::getListSize(){
 }
 
 void LinkedList::printList(){
+//This method takes: O(n)
   Node *temp = root;
   while(temp != nullptr){
     cout << temp->data;
@@ -119,6 +127,7 @@ void LinkedList::printReverseList(){
 }
 
 void LinkedList::traverseReversedList(Node *node){
+//This method takes: O(n)
   if (node == nullptr){
     return;
   }
@@ -131,12 +140,30 @@ void LinkedList::traverseReversedList(Node *node){
 }
 
 void LinkedList::deleteList(Node *node){
+//This method takes: O(n)
   if(node == nullptr){
     return;
   }
   deleteList(node->next);
   //cout << "deleting node with value: " << node->data << endl;
   delete node;
+}
+
+void LinkedList::reverseListOrder(){
+  reverseOrder(root);
+}
+
+void LinkedList::reverseOrder(Node *node){
+//This method takes: O(n)
+  if(node->next == nullptr){
+    root = node;
+    return;
+  }
+  reverseOrder(node->next);
+  Node *temp = node->next;
+  temp->next = node;
+  node->next = nullptr;
+  return;
 }
 
 }

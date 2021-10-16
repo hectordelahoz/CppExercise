@@ -37,5 +37,9 @@ int main(int argc, char **argv){
   l1.printList();
   cout << "pirnt the list in the reverse order " << endl;
   l1.printReverseList();
+  cout << "reversing first list order " << endl;
+  l1.reverseListOrder();
+  cout << "printing first list new order " << endl;
+  l1.printList();
   return 0;
 }
