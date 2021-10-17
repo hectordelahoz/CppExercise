@@ -1,10 +1,12 @@
 #include "src/linkedlist.hpp"
+#include "src/linkedlistTemplate.hpp"
 #include <iostream>
 #include <ostream>
 
 using namespace std;
 using namespace datastructure;
 using namespace linkedlist;
+using namespace linkedlistTemplate;
 
 int main(int argc, char **argv){
   cout << "I am testing Linked List strucutre"<< endl;
