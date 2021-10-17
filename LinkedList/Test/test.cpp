@@ -77,6 +77,28 @@ TEST_F(LinkedListTest, insertValueAt){
   EXPECT_EQ(l1.getValueAt(5),20);
 }
 
+TEST_F(LinkedListTest, getNodeAtandDeleteNodeAt){
+  EXPECT_EQ(l1.getListSize(),1);
+  EXPECT_EQ(l1.getValueAt(0),x0);
+  EXPECT_EQ(l1.getValueAt(0),l1.getRootValue());
+  EXPECT_TRUE(l1.updateValueAt(0,x1));
+  EXPECT_EQ(l1.getListSize(),1);
+  EXPECT_EQ(l1.getValueAt(0),x1);
+  EXPECT_EQ(l1.getRootAddr(), l1.getNodeAt(0));
+  l1.pushBack(x2);
+  EXPECT_EQ(l1.getListSize(),2);
+  l1.insertAt(20,x3);
+  EXPECT_EQ(l1.getListSize(),3);
+  EXPECT_EQ(l1.getValueAt(0),x1);
+  EXPECT_EQ(l1.getValueAt(1),x2);
+  EXPECT_EQ(l1.getValueAt(2),x3);
+  const Node* temp = l1.getNodeAt(1);
+  EXPECT_TRUE(l1.deleteNodeAt(0));
+  EXPECT_EQ(l1.getListSize(),2);
+  EXPECT_EQ(l1.getRootValue(),l1.getValueAt(0));
+  EXPECT_EQ(l1.getRootAddr(),temp);
+}
+
 int main(int argc, char **argv){
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

@@ -45,6 +45,39 @@ const Node* LinkedList::getRootAddr(){
   return root;
 }
 
+const Node* LinkedList::getNodeAt(const unsigned int &index){
+  if (index >= size)
+    return nullptr;
+
+  Node* temp = root;
+  for (int i=0; i < index; i++){
+    temp = temp->next;
+  }
+  return temp;
+}
+
+bool LinkedList::deleteNodeAt(const unsigned int &index){
+  if (index > size || size == 1)
+    return false;
+
+  Node* temp = root;
+  if(index == 0){
+    root = temp->next;
+    delete temp;
+    --size;
+    return true;
+  }
+
+  for(int i = 0; i<index-1; i++){
+    temp = temp->next;
+  }
+  Node* toDelete = temp->next;
+  temp->next = temp->next->next;
+  delete toDelete;
+  --size;
+  return true;
+}
+
 bool LinkedList::updateValueAt(const unsigned int &index, const int &value){
 //This method takes: O(n)
   if (index >= size)

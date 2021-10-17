@@ -19,6 +19,8 @@ class LinkedList{
     int getValueAt(const int &);
     bool updateValueAt(const unsigned int &, const int &);
     const Node* getRootAddr();
+    const Node* getNodeAt(const unsigned int &);
+    bool deleteNodeAt(const unsigned int &);
     void pushBack(const int &);
     void insert(const int &);
     bool insertAt(const unsigned int &, const int &);
