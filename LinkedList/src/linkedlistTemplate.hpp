@@ -113,5 +113,4 @@ void LinkedListTemplate<T>::deleteList(Node<T> *node){
 
 }
 }
-
 #endif
